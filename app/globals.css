@@ -1,26 +1,255 @@
+/* ── Adobe Fonts (Typekit) ── */
+@import url("https://use.typekit.net/dfw1jdh.css");
+
+/* ── Tailwind v4 ── */
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ── Design Tokens via @theme ── */
+@theme {
+
+  /* ── Color ── */
+  --color-black: #0d0d0d;
+  --color-white: #ffffff;
+  --color-red: #cb102c;
+  --color-blue: #cfe8ff;
+
+  /* ── Font Family ──
+     --font-serif → orpheus-pro (display / headings)
+     --font-sans  → freight-text-pro (body — text serif, not a sans font) */
+  --font-serif: "orpheus-pro", Georgia, serif;
+  --font-sans: "freight-text-pro", Georgia, serif;
+
+  /* ── Line Height ──
+     Generates leading-short, leading-standard, leading-tall utilities. */
+  --line-height-short: 1;
+  --line-height-standard: 1.2;
+  --line-height-tall: 1.4;
+
+  /* ── Breakpoints (Webflow standard) ── */
+  --breakpoint-sm: 480px;   /* Mobile L  — 480px+ */
+  --breakpoint-md: 768px;   /* Tablet    — 768px+ */
+  --breakpoint-lg: 992px;   /* Desktop   — 992px+ */
+  --breakpoint-xl: 1280px;  /* Desktop L — 1280px+ */
+  --breakpoint-2xl: 1440px; /* Desktop XL */
+
+  /* ── Type Scale ──────────────────────────────────────────
+     Sizes from Webflow base collection. Line heights computed:
+       headings & title × leading-standard (1.2)
+       body, label, caption, footnote × leading-tall (1.4)
+     sm = mobile (<768px) | md = tablet (768px+) | lg = desktop (992px+)
+  ──────────────────────────────────────────────────────── */
+
+  /* Display */
+  --text-display-sm: 40px;
+  --text-display-sm--line-height: 48px;    /* 40 × 1.2 */
+  --text-display-md: 52px;
+  --text-display-md--line-height: 62px;    /* 52 × 1.2 */
+  --text-display-lg: 56px;
+  --text-display-lg--line-height: 67px;    /* 56 × 1.2 */
+
+  /* H1 */
+  --text-h1-sm: 35px;
+  --text-h1-sm--line-height: 42px;         /* 35 × 1.2 */
+  --text-h1-md: 37px;
+  --text-h1-md--line-height: 44px;         /* 37 × 1.2 */
+  --text-h1-lg: 40px;
+  --text-h1-lg--line-height: 48px;         /* 40 × 1.2 */
+
+  /* H2 */
+  --text-h2-sm: 25px;
+  --text-h2-sm--line-height: 30px;         /* 25 × 1.2 */
+  --text-h2-md: 26px;
+  --text-h2-md--line-height: 31px;         /* 26 × 1.2 */
+  --text-h2-lg: 28px;
+  --text-h2-lg--line-height: 34px;         /* 28 × 1.2 */
+
+  /* Title */
+  --text-title-sm: 17px;
+  --text-title-sm--line-height: 20px;      /* 17 × 1.2 */
+  --text-title-md: 16px;
+  --text-title-md--line-height: 19px;      /* 16 × 1.2 */
+  --text-title-lg: 20px;
+  --text-title-lg--line-height: 24px;      /* 20 × 1.2 */
+
+  /* Body */
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 20px;       /* 14 × 1.4 */
+  --text-body-md: 15px;
+  --text-body-md--line-height: 21px;       /* 15 × 1.4 */
+  --text-body-lg: 16px;
+  --text-body-lg--line-height: 22px;       /* 16 × 1.4 */
+
+  /* Label */
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 17px;      /* 12 × 1.4 */
+  --text-label-md: 13px;
+  --text-label-md--line-height: 18px;      /* 13 × 1.4 */
+  --text-label-lg: 14px;
+  --text-label-lg--line-height: 20px;      /* 14 × 1.4 */
+
+  /* Caption */
+  --text-caption-sm: 10px;
+  --text-caption-sm--line-height: 14px;    /* 10 × 1.4 */
+  --text-caption-md: 11px;
+  --text-caption-md--line-height: 15px;    /* 11 × 1.4 */
+  --text-caption-lg: 12px;
+  --text-caption-lg--line-height: 17px;    /* 12 × 1.4 */
+
+  /* Footnote */
+  --text-footnote-sm: 8px;
+  --text-footnote-sm--line-height: 11px;   /* 8 × 1.4 */
+  --text-footnote-md: 9px;
+  --text-footnote-md--line-height: 13px;   /* 9 × 1.4 */
+  --text-footnote-lg: 10px;
+  --text-footnote-lg--line-height: 14px;   /* 10 × 1.4 */
+
+  /* ── Spacing ──────────────────────────────────────────────
+     Overrides Tailwind's default spacing scale at steps 5–10.
+     Steps 0–4 match Tailwind defaults (4px units).
+  ──────────────────────────────────────────────────────── */
+  --spacing-0: 0px;
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 24px;
+  --spacing-6: 32px;
+  --spacing-7: 48px;
+  --spacing-8: 64px;
+  --spacing-9: 96px;
+  --spacing-10: 128px;
+
+  /* ── Border Radius ── */
+  --radius-none: 0px;
+  --radius-2xs: 4px;
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-2xl: 40px;
+  --radius-full: 9999px;
+
+  /* ── Layout Grid ──
+     Margins:  mobile 16px | tablet 32px | desktop 64px
+     Gutters:  mobile 16px | tablet 24px | desktop 32px
+     Columns:  mobile 4    | mobile-landscape 6 | tablet 8 | desktop 12 */
+  --grid-margin-mobile: 16px;
+  --grid-margin-tablet: 32px;
+  --grid-margin-desktop: 64px;
+
+  --grid-gutter-mobile: 16px;
+  --grid-gutter-mobile-landscape: 16px;
+  --grid-gutter-tablet: 24px;
+  --grid-gutter-desktop: 32px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ── Base Styles ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-size: var(--text-body-sm);
+  line-height: var(--text-body-sm--line-height);
+  color: var(--color-black);
+  background-color: var(--color-white);
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: var(--text-body-md);
+    line-height: var(--text-body-md--line-height);
+  }
+}
+
+@media (min-width: 992px) {
+  body {
+    font-size: var(--text-body-lg);
+    line-height: var(--text-body-lg--line-height);
+  }
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+hr {
+  border: none;
+  border-top: 0.5px solid var(--color-black);
+}
+
+/* ── Site Container ── */
+.site-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--grid-margin-mobile);
+  padding-right: var(--grid-margin-mobile);
+}
+
+@media (min-width: 768px) {
+  .site-container {
+    padding-left: var(--grid-margin-tablet);
+    padding-right: var(--grid-margin-tablet);
+  }
+}
+
+@media (min-width: 992px) {
+  .site-container {
+    padding-left: var(--grid-margin-desktop);
+    padding-right: var(--grid-margin-desktop);
+  }
+}
+
+/* ── Grid Layout ──
+   Use alongside Tailwind's `grid` utility: <div class="grid grid-layout"> */
+.grid-layout {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--grid-gutter-mobile);
+}
+
+@media (min-width: 480px) {
+  .grid-layout {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    column-gap: var(--grid-gutter-mobile-landscape);
+  }
+}
+
+@media (min-width: 768px) {
+  .grid-layout {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    column-gap: var(--grid-gutter-tablet);
+  }
+}
+
+@media (min-width: 992px) {
+  .grid-layout {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: var(--grid-gutter-desktop);
+  }
 }
